@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>我的地址联动</title>
+</head>
+<body>
+	<select id="con" ></select>
+	<select id="city"></select>
+	<select id="zone"></select>
+	<script type="text/javascript">
+		//声明两个数组
+		var conList = ['美国' , '中国' , '日本' , '韩国' , '朝鲜'];
+		var cityList = new Array();
+			cityList[0] = ['洛杉矶' , '纽约' , '加州' , '华盛顿' , '北卡'];
+			cityList[1] = ['北京' , '上海' , '南京' , '深圳' , '重庆' , '海南'];
+			cityList[2] = ['东京' , '大版' , '神户' , '广岛' , '北海道' , '长崎'];
+			cityList[3] = ['首尔' , '静安' , '南京' , '深圳' , '重庆' , '海南'];
+			cityList[4] = ['平壤' , '上海' , '南京' , '深圳' , '重庆' , '海南'];
+		var zoneList = new Array();
+			zoneList[0] = ['静安区' , '浦东区' , '徐汇区' , '松江区' , '闵行区' , '奉贤区'];
+		//首先获取页面标签元素
+		var con = document.getElementById('con');
+		var city = document.getElementById('city');
+		var zone = document.getElementById('zone');
+		
+		//循环添加option选项
+		for(var i =0 ; i < conList.length; i++){
+			con.add(new Option(conList[i] ,i ) );
+		
+		}
+		//判断城市下拉选项中是否有值因为第一次刷新页面的时候城市下拉选项框是空的当你点第一个时并没有
+		//触发onchang事件因此不会有反应
+		// console.log(con.value);
+		if(city.innerHTML == ''){
+			for(var i in cityList[0]){
+				city.add(new Option(cityList[0][i]));
+			}
+		}
+			con.onchange=function Ch(){
+			city.innerHTML = '';
+			//获取国家传过来的值
+			var val = con.value;
+			// console.log(val);
+			for(var s = 0 ; s<cityList[val].length; s++){
+				city.add(new Option(cityList[val][s]));
+			}
+		}
+		city.onchang = function asfds(){
+			var valu = city.value;
+			console.log(valu);
+			zone.innerHTML == '';
+			console.log(zoneList[valu].length);
+			for(var k = 0 ; k<zoneList[valu].length; k++){
+				zone.add(new Option(zoneList[valu][k]));
+			}
+		}
+		
+	</script>
+</body>
+</html>

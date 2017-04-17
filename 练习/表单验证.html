@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单验证</title>
+</head>
+<body>
+	<form action="./倒计时.html" name="myform" onsubmit="return check()">
+		用户名:<input type="text" name="username" >
+		密　码:<input type="password" name="pass" >
+		<input type="submit" value="提交">
+	</form>
+	<script type="text/javascript">
+		function check(){
+			var flag = true;
+			if(document.myform.username.value ==''){
+				alert('name不能为空')
+				flag = false;
+			}
+			if(document.myform.pass.value == ''){
+				alert('密码不正确')
+				flag = false;
+			}
+			return flag;
+		}
+	</script>
+</body>
+</html>

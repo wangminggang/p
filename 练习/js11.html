@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单验证</title>
+</head>
+<body>
+	<form action="" name="myform" method="post" onsubmit="return check()">
+		<p>用户名:<input type="text" name="username"></p>
+		<p>密码:<input type="password" name="password"></p>
+		<input type="submit" value='提交'>
+	</form>
+	<script type="text/javascript">
+		function check(){
+			var flag = true;
+			if(document.myform.username.value == ''){
+				alert('用户名不能为空!!!!');
+				flag = false;
+			}
+			if(document.myform.password.value ==''){
+				alert('密码不正确!!!!')
+				flag = false;
+			}
+			return falg;
+		}
+	</script>
+</body>
+</html>

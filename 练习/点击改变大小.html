@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>59</title>
+</head>
+<body>
+	<img src="1.jpg" id="img" style="width:100px;height:100px;">
+	<hr>
+	<button onclick="Big()" >点我变大</button>
+	<button onclick="Small()" >点我变小</button>
+	<script type="text/javascript">
+		function Big(){
+			var img = document.getElementById('img');
+			img.style.width = 300+'px';
+			img.style.height = 300+'px';
+		}
+		function Small(){
+			img.style.width = 50+'px';
+			img.style.height = 50+'px';
+
+		}
+	</script>
+</body>
+</html>

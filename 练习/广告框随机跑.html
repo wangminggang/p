@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>广告框随机跑</title>
+	<style>
+		#box{
+			width: 100px;
+			height: 100px;
+			border: 1px solid red;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id='box'>
+		<img src="1.jpg" style="width:100px;height:100px;">
+	</div>
+	<script type="text/javascript">
+		//首先获取页面元素
+		
+		var x = 0;	//向左移动的距离
+		var y = 0;	//向下移动的距离
+		var timer;
+		var flag = 1; //1：表示向右边移动，2：表示向下面移动，3：表示向左边移动，4：表示向上移动
+		//获取当前的box的元素
+		var box = document.getElementById('box');
+		function run(){
+			//获取浏览窗口的宽度和高度
+			var width = document.documentElement.clientWidth;
+			var height = document.documentElement.clientHeight;
+			//判断是否向右边移动
+				if (flag == 1)
+				{
+					x += 10;
+				}
+				//判断是否向下移动
+				if (flag == 2)
+				{
+					y += 10;
+				}
+
+				//判断是否向左边移动
+				if (flag == 3)
+				{
+					x -= 10;
+				}
+
+				if (flag == 4)
+				{
+					y -= 10;
+				}
+				//改变盒子的left
+				box.style.left = x+'px';
+				//改变盒子的top
+				box.style.top = y+'px';
+				
+				//改变flag的值
+				if (x > (width - 110))
+				{
+					//clearTimeout(timer);
+					flag = 2;
+				}
+
+				//改变flag的值
+				if (y > (height - 110))
+				{
+					//clearTimeout(timer);
+					flag = 3;
+				}
+
+				//判断x的值是否小于0
+				if (x < 0)
+				{
+					flag = 4;
+				}
+
+				//如果x和y的值小于0
+				if (y < 0 && x < 0)
+				{
+					flag = 1;
+				}
+				
+		
+		}
+		timer = setInterval('run()' , 100);
+	</script>
+</body>
+</html>

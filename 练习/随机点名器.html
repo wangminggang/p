@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>随机点名器</title>
+	<style>
+		#box{
+			width: 500px;
+			height: 300px;
+			border: 1px solid red ;
+			background-color: #abcdef;
+			margin: 200px auto;
+		}
+		#box div{
+			width: 300px;
+			height: 50px;
+			border: 2px solid red;
+			margin: 70px auto;
+		}
+		#box button{
+			width: 150px;
+			height: 40px;
+			border: 1px solid red;
+			margin: 5px 70px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box" >
+		<div id='box1'>姓名</div>
+		<div>
+			<button id="bt" onclick="doit()">开始</button>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var timer = null;
+		function run(){
+			var arr = ['刘备' , '关羽' , '张飞' , '赵云' , '诸葛亮','刘备' , '关羽' , '张飞' , '赵云' , '诸葛亮'];
+			var num =Math.floor( Math.random()*1000%arr.length);
+			var box1 = document.getElementById('box1');
+			box1.innerHTML = arr[num];
+		}
+		function doit() {
+				if (timer == null)
+				{
+					bt.innerHTML = '暂停';
+					timer = setInterval("run()", 100);
+				} else {
+					//再一次点击的时候，
+					bt.innerHTML = '开始';
+					clearTimeout(timer);
+					//console.log(timer);
+					timer = null;
+				}	
+			}
+		
+
+	</script>
+</body>
+</html>

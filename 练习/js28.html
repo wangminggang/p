@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="checkbox" name="1">
+	<input type="checkbox" name="2">
+	<input type="checkbox" name="3">
+	<input type="checkbox" name="4">
+	<input type="checkbox" name="5">
+	<input type="checkbox" name="6">
+	<hr>
+	<button onclick="Go(1)">全选</button>
+	<button onclick="Go(2)">全不选</button>
+	<button onclick="Go(3)">反选</button>
+	<script type="text/javascript">
+		//首先获取页面元素
+		var val = document.getElementsByTagName('input');
+		console.log(val);
+		function Go(m){
+			// console.log(m);
+			for(var i = 0; i<val.length; i++){
+				switch(m){
+				case 1:
+					val[i].checked = true;
+				break;
+				case 2:
+					val[i].checked = false;
+				break;
+				case 3:
+					val[i].checked = !val[i].checked;
+				break;
+				}
+			}
+			
+		}
+	</script>
+</body>
+</html>

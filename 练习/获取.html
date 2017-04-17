@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+	<div>
+		<button>得到1</button>
+		<button>得到2</button>
+		<button>得到3</button>
+		<button>得到4</button>
+		<button>得到5</button>
+	</div>
+	<script type="text/javascript">
+		//首先获取页面标签元素
+		var lis = document.getElementsByTagName('li');
+		var butt = document.getElementsByTagName('button');
+		for(var i =0 ; i<=butt.length ; i++){
+			
+				(function(i){
+					butt[i].onclick=function(){
+					console.log(lis[i].innerHTML);
+				}
+
+			})(i)
+			// function f1(i){
+			// 	(butt[i].onclick=function f2(){
+			// 	console.log(lis[i].innerHTML);	
+			// 	})(i)
+			// }
+			// f1(i);
+			
+		}
+	</script>
+</body>
+</html>

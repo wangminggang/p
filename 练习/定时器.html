@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>定时器</title>
+		<style>
+			#box{
+				width: 400px;
+				height: 100px;
+				border: 2px solid red; 
+				font-size: 50px;
+				text-align: center;
+				line-height: 100px;
+				padding: 10px;
+				font-weight: 700;
+			}
+		</style>
+		<script type="text/javascript">
+			var m = 10;
+			function start(){		
+					m--;
+				if(m<=0){
+					clearInterval(timer);
+					return;
+				}
+				 console.log(m);
+				 document.getElementById('box').innerHTML = m;
+			}
+		</script>
+	</head>
+	<body>
+		<h1>定时器</h1>
+		<button onclick=" timer = setInterval('start()', 1000);">开始计时</button>
+		<hr>
+		<div id="box">10</div>
+		
+	</body>
+</html>

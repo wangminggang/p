@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>广告框</title>
+	<style>
+		#box{
+			width: 100px;
+			height: 100px;
+			border: 1px solid red;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<img src="2.jpg" style="width:100px;height:100px;">
+	</div>
+	<script type="text/javascript">
+		//首先获取页面元素
+		var x = 0;//x方向移动
+		var y = 0;//y方向移动
+		var flag = 1;//1代表向右移动 ;2 代表向下移动 3 代表向左移动 4 代表向上移动
+		var timer ;//定时器
+		console.log(flag);
+		var box = document.getElementById('box');
+		function run(){
+			width = document.documentElement.clientWidth;
+			height= document.documentElement.clientHeight;
+			// console.log(height);
+			if(flag == 1){
+				x += 10;
+			}
+			if(flag == 2){
+				y +=10;
+			}
+			if(flag == 3){
+				x -= 10;
+			}
+			if(flag == 4){
+				y -= 10;
+			}
+			// console.log(x);
+			box.style.top = y+'px';
+			box.style.left = x+'px';
+			//改变flag的值
+			if(x > (width - 110)){
+				flag = 2;
+			}
+			if(y > (height - 110)){
+				flag = 3;
+			}
+			if(x < 0){
+				flag = 4;
+			}
+			if(y < 0 && x < 0){
+				flag = 1;
+			}
+
+
+		}
+		timer = setInterval('run()' , 50);
+		run();
+	</script>
+</body>
+</html>

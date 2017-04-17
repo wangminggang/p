@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>倒计时</title>
+	<style>
+		#out{
+			width: 400px;
+			height: 100px;
+			border: 2px solid red;
+			text-align: center;
+			font-size: 50px;
+			line-height: 100px;
+			font-weight: 700;
+		}
+	</style>
+	<script type="text/javascript">
+		var m = 10;
+		function Go(){
+			m--;
+			if(m<=0){
+				clearInterval(timer);
+				return;
+			}
+			//将结果放到div中
+		document.getElementById("out").innerHTML= m;
+		console.log(m);
+		}
+		
+		
+	</script>
+</head>
+<body>
+	<h1>倒计时</h1>
+	<button onclick="timer = setInterval('Go()',1000);">点击开始</button>
+	<hr>
+	<div id='out'>10</div>
+
+</body>
+</html>

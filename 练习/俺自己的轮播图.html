@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>轮播图</title>
+</head>
+<body>
+	<div id="play">
+		<div id="big" style="width:300px; height:300px ; border:1px solid red;margin:0 auto ;">
+			<img src="1.jpg" style="width:300px;height:300px; display:block;" >
+			<img src="2.jpg" style="width:300px;height:300px; display:none;" >
+			<img src="3.jpg" style="width:300px;height:300px; display:none;" >
+			<img src="5.jpg" style="width:300px;height:300px; display:none;" ></div>
+		<div id="small" style="width:300px; height:70px ; border:1px solid red;margin:20px auto ;">
+			<img src="1.jpg" style="width:50px; height:50px;margin:5px 5px;border:1px solid red;" >
+			<img src="2.jpg" style="width:50px; height:50px;margin:5px 5px;border:1px solid green;" >
+			<img src="3.jpg"  style="width:50px; height:50px;margin:5px 5px;border:1px solid green;">
+			<img src="5.jpg" style="width:50px; height:50px;margin:5px 5px;border:1px solid green;">
+		</div>
+	</div>
+	
+</body>
+	<script type="text/javascript">
+		//获取所有的大图
+		var play = document.getElementById('play');
+		var big = document.getElementById('big');
+		var bigPic = big.getElementsByTagName('img')
+
+		var small = document.getElementById('small');
+		var smallPic = small.getElementsByTagName('img');
+		var m = 0;
+		function run(){
+			if(m>=4){
+				m=0;
+				
+			}
+			display(m);
+				m++;
+		}
+		var timer = setInterval('run()', 2000);
+		function display(m){
+			//首先将所有的大图属性更改
+			for(j=0 ; j<bigPic.length ; j++){
+				bigPic[j].style.display='none';
+				smallPic[j].style.border = "1px solid green";
+			}
+			bigPic[m].style.display = 'block';
+			smallPic[m].style.border = "2px solid red";
+		}
+		
+			for(k = 0; k < smallPic.length ; k++){
+
+					(function(k){
+						smallPic[k].onmouseover=function(){
+
+								display(k);
+								clearTimeout(timer);
+															}
+						smallPic[k].onmouseout = function () {
+								m = k + 1;
+								timer = setInterval("run()", 2000);
+																}
+					})(k);
+			}
+				
+					
+			
+
+	
+		
+	</script>
+</html>

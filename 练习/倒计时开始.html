@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>倒计时</title>
+	<style>
+		#time{
+			width: 500px;
+			height: 40px;
+			border: 1px solid black;
+			margin: 200px auto;
+			background-color:#abcdef ;
+			color:blue ;
+			text-align: center;
+			line-height: 40px;
+			font-size: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div id="time">距离团购还有xxx小时xxx分钟xxx秒</div>
+	<script type="text/javascript">
+		var time = 60;
+		//首先获取页面元素
+		var timer = document.getElementById('time');
+		function run(){
+			if(time < 0){
+				clearTimeout(settime);
+				return;
+			}
+			//计算时分秒
+		var hour = Math.floor(time/3600);
+		var minour = Math.floor((time-hour*3600)/60);
+		var mill = time - hour*3600 -minour*60;
+		var str = "距离团购还有"+hour+"时"+minour+"分"+mill+"秒";
+		timer.innerHTML = str;
+		time-=1;
+		}
+		var settime = setInterval(run , 100);
+		// run();
+		
+
+	</script> 
+</body>
+</html>

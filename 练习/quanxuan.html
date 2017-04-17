@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script type="text/javascript">
+ 	var lis=document.getElementsByTagName('input');
+ 	console.log(lis);
+ 	function func(m){
+ 		for(var i =0;i<lis.length;i++){
+ 			switch(m){
+ 				case 1:
+ 					lis[i].checked = true;
+ 				break;
+ 				case 2:
+ 				lis[i].checked = NaN;
+ 				break;
+ 				case 3:
+ 				lis[i].checked = !lis[i].checked;
+
+ 				break;
+
+ 			}
+ 		
+ 		}
+
+ 	}
+ 	// function func1(){
+ 	// 	for(var i =0;i<lis.length;i++){
+
+ 	// 	lis[i].checked = NaN;//7种情况
+ 	// 	}
+
+ 	// }
+ 	// function func2(){
+ 	// 	for(var i =0;i<lis.length;i++){
+
+ 	// 	lis[i].checked = !lis[i].checked;//7种情况
+ 	// 	}
+
+ 	// }
+ 	
+
+
+	
+
+	
+</script>
+<body>
+	<ul>
+		<li><input type="checkbox">1</li>
+		<li><input type="checkbox">2</li>
+		<li><input type="checkbox">3</li>
+		<li><input type="checkbox">4</li>
+		<li><input type="checkbox">5</li>
+
+		
+	</ul>
+	<button onclick="func(1)">全选</button>
+	<button onclick="func(2)">全不选</button>
+	<button  onclick="func(3)">反选</button>
+
+</body>
+</html>

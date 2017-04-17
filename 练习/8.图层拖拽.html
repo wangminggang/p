@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <title>JS</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+            background-color: #09f;
+            cursor: pointer;
+            position: absolute;
+            left:100px;
+            top:100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>JS事件</h1>
+    <hr>
+
+    <div id="box"></div>
+   
+    <script>
+        //按下
+        box.onmousedown = function(env){
+            this.style.backgroundColor = "#acd";
+            this.innerHTML = "抓住";
+
+            //按下时,计算出鼠标在div上的相对位置
+            var env = env || window.event;
+            var left = env.clientX - box.offsetLeft;
+            var top = env.clientY - box.offsetTop;
+
+            //绑定移动事件
+            document.onmousemove = function (en){
+                var e = en || window.event;
+                //获取鼠标位置
+                //鼠标偏移量(偏差值) = 鼠标位置坐标 - 元素左上角坐标
+                var x = e.clientX - left;
+                var y = e.clientY - top;
+
+                //给div重新定位
+                box.style.left = x + 'px';
+                box.style.top = y + 'px';
+            }
+        }
+
+        //松开
+        document.onmouseup = function(){
+            box.style.backgroundColor = "#09f";
+            box.innerHTML = "放开那女孩";
+            //解绑移动事件
+            document.onmousemove = null;
+        }
+
+
+
+    </script>
+</body>
+</html>

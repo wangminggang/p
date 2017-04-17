@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>定时器</title>
+	<style>
+		#time{
+			width: 400px;
+			height: 100px;
+			border: 2px solid red;
+			line-height: 100px;
+			font-size: 50px;
+			/* padding: 20px; */
+			text-align: center;
+		}
+	</style>
+	<script type="text/javascript">
+		var m = 10;
+		function Go(){
+			// timer = setInterVal(m,2000);
+			
+			m--;
+			if(m <=0){
+				clearInterval(timer);
+				return;
+			}
+			//将结果放入div中
+			document.getElementById('time').innerHTML = m;
+		}
+	</script>
+</head>
+<body>
+	<h1>定时器</h1>
+	<button onclick="timer=setInterval('Go()',1000);">点击开始</button>
+	<hr>
+	<div id="time">10</div>
+	
+</body>
+</html>

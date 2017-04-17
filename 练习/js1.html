@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul>
+		<li>我是刘备</li>
+		<li>我是关羽</li>
+		<li>我是张飞</li>
+		<li>我是赵云</li>
+		<li>我是马超</li>
+	</ul>
+	<div>
+		<button onclick="Go()">得到刘备</button>
+		<button onclick="Go()">得到关羽</button>
+		<button onclick="Go()">得到张飞</button>
+		<button onclick="Go()">得到赵云</button>
+		<button onclick="Go()">得到马超</button>
+	</div>
+	<script type="text/javascript">
+		//获取按钮
+		var butt = document.getElementsByTagName('button');
+		//获取li
+		var lis = document.getElementsByTagName('li');
+		
+		for(i=0; i<butt.length ; i++){
+			(function(i){
+				butt[i].onclick = function(){
+					console.log(lis[i].innerHTML);
+				}
+			})(i)
+			
+	}
+		
+	</script>
+</body>
+</html>

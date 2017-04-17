@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>计算器练习</title>
+	<style>
+		#box{
+			width: 400px;
+			height: 100px;
+			border: 2px dotted  red;
+		}
+	</style>
+</head>
+<body>
+	<h1>计算器</h1>
+	<hr>
+	数1:<input type="text" id="num1">
+	<select name='jisuan' id="method">
+		<option value="1">+</option>
+		<option value="2">-</option>
+		<option value="3">*</option>
+		<option value="4">/</option>
+	</select>
+	数2:<input type="text" id="num2">
+	<button onclick="Go()">=</button>
+	<div id="box"></div>
+	<script type="text/javascript">
+		function Go(){
+			//首先获取num1. num2
+			var num1 = document.getElementById('num1').value;
+			var num2 = document.getElementById('num2').value;
+			if(isNaN(num1)){
+				alert('数1不是一个数值');
+			}
+			if(isNaN(num2)){
+				alert('数2不是一个数值');
+			}
+			num1 = Number(num1);
+			num2 = Number(num2);
+			//获取执行的操作
+			var method = document.getElementById('method').value;
+			//判断执行哪种操作
+			var result='';
+			switch( method ){
+				case '1': result = num1+num2; break;
+				case '2': result = num1-num2;  break;
+				case '3': result = num1*num2; break;
+				case '4': 
+					if(num2 ==0){
+						alert('零不能作为除数');
+						return;
+					}
+					result = num1/num2;
+				break;
+				
+			}
+			//得到结果后将结果放到div里面去
+			document.getElementById('box').innerHTML = result.toFixed(2);
+		}
+	</script>	
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>定时替换图片</title>
+	<style>
+		#img {
+			overflow: hidden;	
+		}
+	</style>
+</head>
+<body>
+	<div id="img" style="width:150px;height:150px;border:1px solid red;">
+		<img src="p1.png" >
+		<img src="p2.png">
+		<img src="p3.png" >
+		<img src="p4.png" >
+		<img src="p5.png" >
+	</div>
+	<button onclick="var timer = setInterval('run()',50)">开始</button>
+	<script type="text/javascript">
+		//首先获取页面元素
+		var img = document.getElementsByTagName('img');
+		// console.log(img);
+		var m = 0;
+		function run(){
+		
+		if(m > 4){
+			m = 0;
+		}
+		dis(m);
+		m+=1;
+		// console.log(m);
+		
+		}
+	
+		function dis(m){ 
+			
+			for(i = 0 ;  i < img.length; i++){
+				img[i].style.display = 'none';
+			
+				if(m == i){
+					img[m].style.display = 'block';
+				
+				}
+			}
+			
+				
+			
+			
+		}
+	
+
+	</script>
+</body>
+</html>

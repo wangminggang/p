@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box{
+			width: 100px;
+			height: 100px;
+			border: 1px solid red;
+			background-color: #abcdef;
+			position: absolute;
+			left: 100px;
+			top: 100px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+	<script type="text/javascript">
+		var box = document.getElementById('box');
+		//首先获取页面元素
+		window.onmousedown = function(e){
+			
+			box.backgroundColor = "#ccc";
+			box.innerHTML  = '小样往哪跑';
+			e.preventDefault();
+			// alert('lksdjf');
+			//鼠标按下时计算鼠标在div上的相对位置
+			//client表示鼠标的绝对坐标 offsetLeft表示元素的绝对坐标
+			var env = e ||window.event;
+			var left = e.clientX -box.offsetLeft;
+			var top = e.clientY - box.offsetTop;
+			//绑定鼠标移动事件
+		window.onmousemove = function (e){
+			var env = e ||window.event;
+			box.backgroundColor = "#fo9";
+			box.innerHTML  = '小样往哪跑';
+			
+			//计算偏移量
+			var x = e.clientX - left;
+			var y = e.clientY - top;
+			box.style.left = x+'px';
+			box.style.top = y+'px';
+
+			
+		}
+
+			}
+		window.onmouseup = function (e){
+			e.preventDefault();
+			box.backgroundColor = 'blue';
+			box.innerHTML = '放开那女孩';
+			window.onmousemove = null;
+		}
+	</script>
+</body>
+</html>

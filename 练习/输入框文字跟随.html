@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p><input type="text" id='text' onkeyup='gen()'><span id='copy'></span></p>
+	<script type="text/javascript">
+		function gen(){
+			var text = document.getElementById('text').value;
+			var copy = document.getElementById('copy');
+			copy.innerHTML = text;
+		}
+	</script>
+</body>
+</html>

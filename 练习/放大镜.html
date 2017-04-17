@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8" />
+	<title>放大镜</title>
+	<style type="text/css">
+		#div1 {
+			width: 400px;
+			height: 249px;
+			padding: 5px;
+			border: 1px solid #ccc;
+			position: relative;
+		}
+		#small_pic {
+			width: 400px;
+			height: 249px;
+			background: #eee;
+			position: relative;
+		}
+		#layer {
+			width: 50px;
+			height: 50px;
+			border: 1px solid #000;
+			background: #fff;
+			filter: alpha(opacity: 30);
+			opacity: 0.3;
+			position: absolute;
+			top: 0;
+			left: 0;
+			display:none;
+		}
+		#mark {
+			width:100%;
+			height:100%;
+			position:absolute;
+			z-index:2;
+			left:0px;
+			top:0px;
+			background:red;
+			filter:alpha(opacity:0);
+			opacity:0;
+		}
+		#big_pic {
+			position: absolute;
+			top: -1px;
+			left: 415px;
+			width:250px;
+			height:250px;
+			overflow:hidden;
+			border:2px solid #CCC;
+			display:none;
+		}
+		#big_pic img {
+			position:absolute;
+/*			top: -30px;
+			left: -80px;*/
+		}
+		/*放到的比例要和小图和大图的比例需要一样*/
+	</style>
+	<script type="text/javascript">
+		window.onload = function () {
+			//获取div的区域
+			var oDiv = document.getElementById('div1');
+			//获取小图盒子的区域
+			var oSmall = document.getElementById('small_pic');
+			//获取小图区域的元素
+			var oMark = document.getElementById('mark');
+			//获取小盒子
+			var oLayer = document.getElementById('layer');
+			//获取一下大盒子
+			var oBig = document.getElementById('big_pic');
+			//取得的大图
+			var oLarge = document.getElementById('large');
+			//绑定一个鼠标滑动事键
+			oMark.onmouseover = function () {
+				//显示小方块和大方块
+				oLayer.style.display = 'block';
+				oBig.style.display = 'block';
+			}
+			//绑定一个鼠标的滑动事件
+			oMark.onmousemove = function (e) {
+				//获取鼠标的坐标
+				var l = e.clientX - oDiv.offsetLeft-oSmall.offsetLeft - oLayer.offsetWidth / 2;
+				var t = e.clientY - oDiv.offsetTop-oSmall.offsetTop - oLayer.offsetHeight / 2;
+				document.title = l+','+t;
+				//限制移动的距离
+				if (l < 0)
+				{
+					l = 0;
+				} else if (l > oMark.offsetWidth - oLayer.offsetWidth)
+				{
+					l = oMark.offsetWidth - oLayer.offsetWidth;
+				}
+
+				if (t < 0)
+				{
+					t = 0
+				} else if (t > oMark.offsetHeight - oLayer.offsetHeight)
+				{
+					t =  oMark.offsetHeight - oLayer.offsetHeight;
+				}
+				//计算比例
+				var scaleX = oLarge.offsetWidth / oMark.offsetWidth;
+				var scaleY = oLarge.offsetHeight / oMark.offsetHeight;
+				//改变小方块的位置
+				oLayer.style.left = l  + 'px';
+				oLayer.style.top = t + 'px';
+				
+				//移动大图
+				oLarge.style.left = - scaleX * l + 'px';
+				oLarge.style.top = - scaleY * t + 'px';
+
+			}
+			//绑定一个鼠标移出的事件
+			oMark.onmouseout = function () {
+				//隐藏小方块和大方块
+				oLayer.style.display = 'none';
+				oBig.style.display = 'none';
+			}
+		}
+	</script>
+</head>
+
+<body>
+
+<div id="div1">
+    <div id="small_pic">
+		<span id="mark"></span>
+        <span id="layer"></span>
+        <img src="img/small.jpg"/>
+    </div>
+    <div id="big_pic">
+		<img id="large" src="img/big.jpg"/>
+	</div>
+</div>
+
+</body>
+</html>
